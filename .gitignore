@@ -1,0 +1,58 @@
+# ===== .NET & ASP.NET Core =====
+bin/
+obj/
+*.user
+*.rsuser
+*.suo
+*.userprefs
+*.csproj.user
+
+# Build outputs
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Publish
+publish/
+
+# ===== Visual Studio =====
+.vs/
+*.vcxproj.user
+*.ncb
+*.opendb
+*.ldb
+
+# ===== Rider / IntelliJ =====
+.idea/
+*.sln.iml
+
+# ===== VS Code =====
+.vscode/
+
+# ===== OS files =====
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# ===== Temp files =====
+*.tmp
+*.temp
+*.bak
+
+# ===== Logs =====
+logs/
+*.log
+
+# ===== EF Core Migrations (only if using InMemory, otherwise allow them) =====
+# Migrations/
+
+# ===== User secrets (ASP.NET Core) =====
+no secrets for this project
+
+
+# Initial .gitignore for ASP.NET Core MVC project
