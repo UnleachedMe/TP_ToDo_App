@@ -1,4 +1,7 @@
 using GitDemoToDoApp.Data;
+using Microsoft.EntityFrameworkCore;
+
+using GitDemoToDoApp.Data;
 using GitDemoToDoApp.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// In-memory database for simplicity
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseInMemoryDatabase("TodoDb"));
 
 // Service pour la session
 builder.Services.AddSession();
