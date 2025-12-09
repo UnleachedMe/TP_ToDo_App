@@ -14,6 +14,8 @@ namespace GitDemoToDoApp.Data
 
         public DbSet<User> Users { get; set; }
 
+
+
         // Seed data for user login (admin, admin)
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,6 +31,7 @@ namespace GitDemoToDoApp.Data
             modelBuilder.Entity<User>().HasData(adminUser);
         }
 
+        public DbSet<TodoItem> TodoItems { get; set; }
         private static string HashPassword(string password)
         {
             using (var sha256 = SHA256.Create())
@@ -37,5 +40,6 @@ namespace GitDemoToDoApp.Data
                 return Convert.ToBase64String(hashedBytes);
             }
         }
+
     }
 }
