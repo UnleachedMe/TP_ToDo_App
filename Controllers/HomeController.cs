@@ -1,10 +1,12 @@
-﻿using GitDemoToDoApp.Mappers;
+﻿using GitDemoToDoApp.Filters;
+using GitDemoToDoApp.Mappers;
 using GitDemoToDoApp.Services;
 using GitDemoToDoApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GitDemoToDoApp.Controllers
 {
+    [ServiceFilter(typeof(AuthFilter))]
     public class HomeController : Controller
     {
         private readonly ITodoService _todoService;
@@ -14,11 +16,10 @@ namespace GitDemoToDoApp.Controllers
             _todoService = todoService;
         }
 
+        [ServiceFilter(typeof(ThemeFilter))]
         public IActionResult Index()
         {
             var username = HttpContext.Session.GetString("username");
-            if (string.IsNullOrEmpty(username))
-                return RedirectToAction("Login", "User");
 
             var todos = _todoService.GetAllTodos();
 
