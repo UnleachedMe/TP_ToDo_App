@@ -1,4 +1,5 @@
 using GitDemoToDoApp.Data;
+using GitDemoToDoApp.Filters;
 using GitDemoToDoApp.Repositories;
 using GitDemoToDoApp.Services;
 using Microsoft.EntityFrameworkCore;
@@ -7,10 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-// In-memory database for simplicity
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseInMemoryDatabase("TodoDb"));
 
 // Service pour la session
 builder.Services.AddSession();
@@ -27,6 +24,17 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 
+// Enregistrement des filtres
+builder.Services.AddScoped<AuthFilter>();
+builder.Services.AddScoped<ThemeFilter>();
+
+// Ajout du filtre global d'authentification (si grande application et beaucoup de controlleurs)
+/*
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(new AuthFilter());
+});
+*/
 
 var app = builder.Build();
 
